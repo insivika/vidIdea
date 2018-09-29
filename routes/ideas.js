@@ -53,11 +53,11 @@ router.post('/', (req, res) => {
       details: req.body.details
     })
   } else {
-    const newUser = {
+    const newIdea = {
       title: req.body.title,
       details: req.body.details,
     }
-    new Idea(newUser)
+    new Idea(newIdea)
       .save()
       .then(idea => {
         req.flash('success_msg', 'This video idea has been added')
@@ -89,7 +89,7 @@ router.delete('/:id', (req, res) => {
     _id: req.params.id
   })
     .then(()=>{
-      req.flash('success_msg', 'Video idea removed')
+      req.flash('error_msg', 'Video idea removed')
       res.redirect('/ideas')
     });
 });
