@@ -13,6 +13,8 @@ router.get('/login', (req, res) => {
   res.render('users/login')
 });
 
+
+
 // User register route
 router.get('/register', (req, res) => {
   res.render('users/register')
@@ -82,6 +84,13 @@ router.post('/register', (req, res) => {
     });
    }
 });
+
+// User logout route
+router.get('/logout', (req, res) => {
+  req.logout();
+  req.flash('success_msg', 'You are logged out');
+  res.redirect('/users/login')
+})
 
 
 module.exports = router;
